@@ -6,13 +6,54 @@
         xmlns:local="clr-namespace:WatchYourBalance"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="MainWindow" Height="450" Width="950" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <VM:MainVM />
     </Window.DataContext>
-    
-    <Grid>
 
-    </Grid>
+    <Border Background="#272537" CornerRadius="10">
+        <Grid x:Name="MainToolbar" Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Watch Your Balance"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Foreground="White" FontSize="18"  />
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Статистика"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"/>
+                <RadioButton Content="Журнал"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             FontSize="14"/>
+                <RadioButton Content="Мои сделки"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             FontSize="14"/>
+                <RadioButton Content="API"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             FontSize="14"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
