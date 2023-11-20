@@ -16,7 +16,7 @@
     </Window.DataContext>
 
     <Border Background="#272537" CornerRadius="10">
-        <Grid x:Name="MainToolbar" Background="Transparent">
+        <Grid x:Name="MainToolbar" Background="Transparent" MouseDown="MainToolbar_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition />
@@ -54,6 +54,28 @@
                              Style="{StaticResource MenuButtonTheme}"
                              FontSize="14"/>
             </StackPanel>
+
+            <Grid Grid.Column="1" x:Name="ToolBar"
+                  Background="Transparent">
+                <Button Height="25" Width="25" x:Name="ExitButton"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Click="ExitButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bd" Background="Transparent">
+                                <Path x:Name="Pt" Data="M0,0 M0.2,0.2 L 0.8,0.8 M0.2,0.8 L0.8,0.2 M1,1"
+                                      Stretch="Uniform" Stroke="Black" StrokeThickness="2"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="Red"/>
+                                    <Setter TargetName="Pt" Property="Stroke" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
         </Grid>
     </Border>
 </Window>
