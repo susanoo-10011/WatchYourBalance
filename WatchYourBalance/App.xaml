@@ -1,13 +1,33 @@
 ﻿<Application x:Class="WatchYourBalance.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:WatchYourBalance.ViewModels"
+             xmlns:view="clr-namespace:WatchYourBalance.Views"
              xmlns:local="clr-namespace:WatchYourBalance"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:StatisticsVM}">
+                <view:StatisticsView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:GetApiVM}">
+                <view:GetApiView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:JournalVM}">
+                <view:JournalView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:TradesVM}">
+                <view:TradesView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

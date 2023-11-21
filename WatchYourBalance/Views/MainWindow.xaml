@@ -9,7 +9,7 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True"
-        Title="MainWindow" Height="450" Width="950" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="800" Width="1800" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <VM:MainVM />
@@ -37,45 +37,78 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"/>
+                             IsChecked="False"
+                             Command="{Binding StatisticsViewCommand}"/>
                 <RadioButton Content="Журнал"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="False"
+                             Command="{Binding JournalViewCommand}"
                              FontSize="14"/>
                 <RadioButton Content="Мои сделки"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="False"
+                             Command="{Binding TradesViewCommand}"
                              FontSize="14"/>
                 <RadioButton Content="API"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding GetApiViewCommand}"
                              FontSize="14"/>
             </StackPanel>
 
             <Grid Grid.Column="1" x:Name="ToolBar"
-                  Background="Transparent">
-                <Button Height="25" Width="25" x:Name="ExitButton"
+                Background="Transparent">
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+                    <Button Height="25" Width="25" x:Name="MinimizeButton" Margin="5"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            Click="MinimizeButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Bd" Background="Transparent">
+                                    <Path x:Name="Pt" Data="M0,-8 M2,2 L18,2"
+                                          Stretch="Uniform" Stroke="Black" StrokeThickness="2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="Red"/>
+                                        <Setter TargetName="Pt" Property="Stroke" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    <Button Height="25" Width="25" x:Name="ExitButton" Margin="5"
                         HorizontalAlignment="Right" VerticalAlignment="Top"
                         Click="ExitButton_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border x:Name="Bd" Background="Transparent">
-                                <Path x:Name="Pt" Data="M0,0 M0.2,0.2 L 0.8,0.8 M0.2,0.8 L0.8,0.2 M1,1"
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Bd" Background="Transparent">
+                                    <Path x:Name="Pt" Data="M0,0 M0.2,0.2 L 0.8,0.8 M0.2,0.8 L0.8,0.2 M1,1"
                                       Stretch="Uniform" Stroke="Black" StrokeThickness="2"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="Bd" Property="Background" Value="Red"/>
-                                    <Setter TargetName="Pt" Property="Stroke" Value="White"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Bd" Property="Background" Value="Red"/>
+                                        <Setter TargetName="Pt" Property="Stroke" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    
+                </StackPanel>
             </Grid>
+            
+            <ContentControl Grid.Row="1" Grid.Column="1" 
+                Content="{Binding CurrentView}"/>
         </Grid>
     </Border>
 </Window>

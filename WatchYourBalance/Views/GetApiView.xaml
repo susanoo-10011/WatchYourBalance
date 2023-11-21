@@ -1,0 +1,24 @@
+﻿<UserControl  x:Class="WatchYourBalance.Views.GetApiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WatchYourBalance.Views"
+        mc:Ignorable="d"
+        Height="730" Width="1580">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Text="Апи ключи" Foreground="White" 
+                   FontSize="38" Margin="10"/>
+
+        <TextBox Foreground="White" Background="Transparent" 
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 Height="60" Width="300" Margin="0,0,20,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+    </Grid>
+</UserControl>
