@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WatchYourBalance.Views
+namespace WatchYourBalance.Views.ApiViews
 {
     /// <summary>
-    /// Логика взаимодействия для GetApiWindow.xaml
+    /// Логика взаимодействия для EnterApiView.xaml
     /// </summary>
-    public partial class GetApiView : UserControl
+    public partial class EnterApiView : UserControl
     {
-        public GetApiView()
+        public EnterApiView()
         {
             InitializeComponent();
         }

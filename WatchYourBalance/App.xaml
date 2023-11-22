@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModel="clr-namespace:WatchYourBalance.ViewModels"
+             xmlns:ApiViewModel="clr-namespace:WatchYourBalance.ViewModels.ApiVM"
              xmlns:view="clr-namespace:WatchYourBalance.Views"
+             xmlns:ApiViews="clr-namespace:WatchYourBalance.Views.ApiViews"
              xmlns:local="clr-namespace:WatchYourBalance"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
@@ -17,7 +19,11 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:GetApiVM}">
-                <view:GetApiView/>
+                <ApiViews:GetApiView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ApiViewModel:EnterApiVM}">
+                <ApiViews:EnterApiView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:JournalVM}">

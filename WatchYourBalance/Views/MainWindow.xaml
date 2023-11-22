@@ -18,24 +18,24 @@
     <Border Background="#272537" CornerRadius="10">
         <Grid x:Name="MainToolbar" Background="Transparent" MouseDown="MainToolbar_MouseDown">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Watch Your Balance"
                        VerticalAlignment="Center" HorizontalAlignment="Center"
-                       Foreground="White" FontSize="18"  />
+                       Foreground="White" FontSize="26"  />
 
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Статистика"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="18"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding StatisticsViewCommand}"/>
@@ -45,21 +45,21 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding JournalViewCommand}"
-                             FontSize="14"/>
+                             FontSize="18"/>
                 <RadioButton Content="Мои сделки"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding TradesViewCommand}"
-                             FontSize="14"/>
+                             FontSize="18"/>
                 <RadioButton Content="API"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding GetApiViewCommand}"
-                             FontSize="14"/>
+                             FontSize="18"/>
             </StackPanel>
 
             <Grid Grid.Column="1" x:Name="ToolBar"
@@ -106,9 +106,9 @@
                     
                 </StackPanel>
             </Grid>
-            
-            <ContentControl Grid.Row="1" Grid.Column="1" 
-                Content="{Binding CurrentView}"/>
+
+            <ContentControl Grid.Row="1" Grid.Column="1"
+                            Content="{Binding CurrentView}"/>
         </Grid>
     </Border>
 </Window>
