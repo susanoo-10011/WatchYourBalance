@@ -13,7 +13,6 @@ namespace WatchYourBalance.ViewModels
 {
     class MainVM : ObservableObject
     {
-        public ICommand UpdateBalanceCommand { get; private set; }
 
         public RelayCommand GetApiViewCommand { get; set; }
         public RelayCommand StatisticsViewCommand { get; set; }
@@ -28,49 +27,6 @@ namespace WatchYourBalance.ViewModels
         public TradesVM TradesVM { get; set; }
         public EnterApiVM EnterApiVM{ get; set; }
 
-
-        public async Task UpdateBalanceAsync()
-        {
-            ApiBinance aPIKeys = new ApiBinance();
-            decimal newBalance = await aPIKeys.GetBalance(_APIKey, _APISecret);
-            Balance = newBalance;
-        }
-
-        
-
-        private string _APISecret;
-        public string APISecret
-        {
-            get { return _APISecret; }
-            set
-            {
-                _APISecret = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _APIKey;
-        public string APIKey
-        {
-            get { return _APIKey; }
-            set
-            {
-                _APIKey = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private decimal _balance;
-        public decimal Balance
-        {
-            get { return _balance; }
-            set
-            {
-                _balance = value;
-                OnPropertyChanged();
-            }
-        }
-
         private object _currentView;
         public object CurrentView
         {
@@ -84,7 +40,6 @@ namespace WatchYourBalance.ViewModels
 
         public MainVM()
         {
-            UpdateBalanceCommand = new RelayCommand(async _ => await UpdateBalanceAsync());
 
             GetApiVM = new GetApiVM();
             StatisticsVM = new StatisticsVM();

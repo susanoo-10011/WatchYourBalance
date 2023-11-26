@@ -5,12 +5,13 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using WatchYourBalance.Models.SaveSettings;
 
 namespace WatchYourBalance.Models
 {
     class ApiBinance
     {
-        public async Task<decimal> GetBalance(string apiKey, string apiSecret)
+        public async Task GetAccountData(string apiKey, string apiSecret)
         {
             string endpoint = "https://fapi.binance.com/fapi/v2/balance"; // это URL конечной точки API бинанса для получения баланса фьючерсного аккаунта.
 
@@ -29,16 +30,7 @@ namespace WatchYourBalance.Models
                 {
                     string content = await response.Content.ReadAsStringAsync(); // Если ответ успешен, читается содержимое ответа в виде строки
 
-                    dynamic jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(content);
-
-                    foreach (var balance in jsonResponse)
-                    {
-                        if (balance.asset == "USDT")
-                        {
-                            decimal balanceDecimal = Convert.ToDecimal(balance.balance);
-                            return balanceDecimal;
-                        }
-                    }
+                    AccountData.ReadingResponse(content);
                 }
                 else
                 {
@@ -46,9 +38,9 @@ namespace WatchYourBalance.Models
                     // Console.WriteLine($"Ошибка: {response.StatusCode}");
 
                 }
-                return 0m;
             }
         }
+
         static string Sign(string data, string apiSecret)
         {
             using (var hmacsha256 = new HMACSHA256(Encoding.UTF8.GetBytes(apiSecret)))

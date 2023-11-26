@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Height="730" Width="1580">
     <UserControl.Resources>
-        <VM:MainVM x:Key="vm"/>
+        <VM:GetApiVM x:Key="vm" />
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource vm}" />
