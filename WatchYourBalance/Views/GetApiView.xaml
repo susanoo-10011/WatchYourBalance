@@ -1,9 +1,9 @@
-﻿<UserControl  x:Class="WatchYourBalance.Views.ApiViews.GetApiView"
+﻿<UserControl  x:Class="WatchYourBalance.Views.GetApiView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WatchYourBalance.Views.ApiViews"
+        xmlns:local="clr-namespace:WatchYourBalance.Views"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
         Height="730" Width="1580">
@@ -56,7 +56,7 @@
                                        Foreground="White" Margin="20"
                                        HorizontalAlignment="Center"/>
                             <TextBox x:Name="ApiKey" Margin="20" HorizontalAlignment="Center" 
-                                     Height="50" Width="600" Text="{Binding APIKey}"/>
+                                     Height="50" Width="600" Text="{Binding ApiKey}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
@@ -64,17 +64,15 @@
                                        Foreground="White" Margin="20"
                                        HorizontalAlignment="Center"/>
                             <TextBox x:Name="ApiSecret" Margin="20" HorizontalAlignment="Center" 
-                                     Height="50" Width="600" Text="{Binding APISecret}"/>
+                                     Height="50" Width="600" Text="{Binding ApiSecret}"/>
 
-                            <TextBlock Text="{Binding Balance}" FontSize="30" 
-                                        Margin="20" Width="200" Foreground="White"
-                                       HorizontalAlignment="Center"/>
+                            
                         </StackPanel>
 
                     </Grid>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
                                 VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
-                        <Button x:Name="AddApiButton" Height="60" Width="60" Command="{Binding UpdateBalanceCommand}">
+                        <Button x:Name="AddApiButton" Height="60" Width="60" Command="{Binding UpdateData }">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button" >
                                     <Border x:Name="Bd">
