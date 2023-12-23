@@ -4,10 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WatchYourBalance.Views"
+             xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
         Height="730" Width="1580">
+    <UserControl.Resources>
+        <VM:GetApiVM x:Key="vm" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource vm}" />
+    </UserControl.DataContext>
+    
     <Grid>
-        <TextBlock Text="СТАТИСТИКА" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-           FontSize="40"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="СТАТИСТИКА" Foreground="White" Grid.Row="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40"/>
+        <TextBlock Grid.Row="0" Text="{Binding GetApi }" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" FontSize="34" Height="100" Width="600" 
+                   Foreground="White"/>
     </Grid>
 </UserControl>
