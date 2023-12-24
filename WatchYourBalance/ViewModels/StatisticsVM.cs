@@ -4,19 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WatchYourBalance.Core;
-using WatchYourBalance.Models.SaveSettings;
+using WatchYourBalance.Models.Servers.Binance.Futures.Entity;
 
 namespace WatchYourBalance.ViewModels
 {
-    internal class StatisticsVM :ObservableObject
+    public class StatisticsVM :ObservableObject
     {
-        public decimal Balance
+        public StatisticsVM() 
         {
-            get { return AccountData.Balance; }
-            set
+
+        }
+
+        private string _GetApiKey;
+        public string GetApiKey
+        {
+            get
             {
-                AccountData.Balance = value;
-                OnPropertyChanged();
+                if (ApiSerialize.ApiKeys() is null || ApiSerialize.ApiKeys().ApiKey == null) return "0";
+                _GetApiKey = ApiSerialize.ApiKeys().ApiKey;
+                return _GetApiKey;
             }
         }
     }

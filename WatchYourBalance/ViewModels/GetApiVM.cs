@@ -8,47 +8,44 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WatchYourBalance.Core;
 using WatchYourBalance.Models;
-using WatchYourBalance.Models.SaveSettings;
-using WatchYourBalance.ViewModels.ApiVM;
+using WatchYourBalance.Models.Servers.Binance.Futures.Entity;
 
 namespace WatchYourBalance.ViewModels
 {
     class GetApiVM : ObservableObject
     {
-        public ICommand UpdateBalanceCommand { get; private set; }
-        public GetApiVM() 
+        public GetApiVM()
         {
-            UpdateBalanceCommand = new RelayCommand(async _ => await UpdateBalanceAsync());
-
+            SaveApiCommand = new RelayCommand(o => SaveApi());
         }
-        public string APISecret
+
+        public ICommand SaveApiCommand { get; set; }
+
+        private void SaveApi()
         {
-            get { return SaveReturnApi.ReturnApiSecret(); }
-            
-            set
-            {
-                SaveReturnApi.SaveApiSecret(value);
+            ApiSerialize.ApiSerializeJson(_ApiKey, _ApiSecret);
+        }
+
+        private string _ApiKey;
+        public string ApiKey
+        {
+            get { return _ApiKey; }
+            set 
+            { 
+                _ApiKey = value;
                 OnPropertyChanged();
             }
         }
 
-        public string APIKey
+        private string _ApiSecret;
+        public string ApiSecret
         {
-            get { return SaveReturnApi.ReturnApiKey(); }
+            get { return _ApiSecret; }
             set
             {
-                SaveReturnApi.SaveApiKey(value);
+                _ApiSecret = value;
                 OnPropertyChanged();
             }
-        }
-
-        
-
-        public async Task UpdateBalanceAsync()
-        {
-            ApiBinance aPIKeys = new ApiBinance();
-
-            await aPIKeys.GetAccountData(SaveReturnApi.ReturnApiKey(), SaveReturnApi.ReturnApiSecret());
         }
     }
 }

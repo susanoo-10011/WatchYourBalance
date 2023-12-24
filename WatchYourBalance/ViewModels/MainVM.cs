@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WatchYourBalance.Core;
 using WatchYourBalance.Models;
-using WatchYourBalance.ViewModels.ApiVM;
 using WatchYourBalance.Views;
 
 namespace WatchYourBalance.ViewModels
@@ -18,14 +17,11 @@ namespace WatchYourBalance.ViewModels
         public RelayCommand StatisticsViewCommand { get; set; }
         public RelayCommand JournalViewCommand { get; set; }
         public RelayCommand TradesViewCommand { get; set; }
-        public RelayCommand EnterApiCommand { get; set; }
-
 
         public GetApiVM GetApiVM { get; set; }
         public StatisticsVM StatisticsVM { get; set; }
         public JournalVM JournalVM { get; set; }
         public TradesVM TradesVM { get; set; }
-        public EnterApiVM EnterApiVM{ get; set; }
 
         private object _currentView;
         public object CurrentView
@@ -45,7 +41,6 @@ namespace WatchYourBalance.ViewModels
             StatisticsVM = new StatisticsVM();
             JournalVM = new JournalVM();
             TradesVM = new TradesVM();
-            EnterApiVM = new EnterApiVM();
 
             CurrentView = GetApiVM;
 
@@ -68,13 +63,6 @@ namespace WatchYourBalance.ViewModels
             {
                 CurrentView = TradesVM;
             });
-
-            EnterApiCommand = new RelayCommand(o =>
-            {
-                CurrentView = EnterApiVM;
-            });
-
         }
-
     }
 }

@@ -16,10 +16,10 @@
     <Grid>
         <StackPanel>
 
-            <TextBlock Text="СТАТИСТИКА БАЛАНСА" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="Апи ключ" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
            FontSize="40" />
 
-            <TextBlock Text="{Binding Balance}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="{Binding  GetApiKey}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
                     FontSize="40" Background="Black" Width="300"/>
         </StackPanel>
     </Grid>

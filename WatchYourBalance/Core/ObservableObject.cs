@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WatchYourBalance.Core
 {
-    internal class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

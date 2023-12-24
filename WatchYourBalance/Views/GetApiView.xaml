@@ -72,7 +72,7 @@
                     </Grid>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
                                 VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
-                        <Button x:Name="AddApiButton" Height="60" Width="60" Command="{Binding UpdateData }">
+                        <Button x:Name="AddApiButton" Height="60" Width="60" Command="{Binding SaveApiCommand }">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button" >
                                     <Border x:Name="Bd">
