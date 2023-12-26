@@ -7,12 +7,14 @@
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
         Height="730" Width="1580">
+    
     <UserControl.Resources>
         <VM:StatisticsVM x:Key="vm"/>
     </UserControl.Resources>
     <UserControl.DataContext>
         <Binding Source="{StaticResource vm}" />
     </UserControl.DataContext>
+    
     <Grid>
         <StackPanel>
 

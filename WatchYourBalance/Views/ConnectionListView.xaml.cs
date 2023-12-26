@@ -16,22 +16,14 @@ using System.Windows.Shapes;
 namespace WatchYourBalance.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для ConnectionListView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ConnectionListView : UserControl
     {
-        public MainWindow()
+        public ConnectionListView()
         {
             InitializeComponent();
-        }
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void MainToolbar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
+            
         }
     }
 }

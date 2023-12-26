@@ -36,7 +36,7 @@ namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
 
             string filePath = Path.Combine(folderPath, "ApiJson.json");
 
-            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
@@ -53,9 +53,21 @@ namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
             if (File.Exists(pathFile))
             {
 
-                string apiKeysStr = File.ReadAllText(pathFile);
-                ApiKeysEntity apiKeys = JsonConvert.DeserializeObject<ApiKeysEntity>(apiKeysStr);
-                return apiKeys;
+                try
+                {
+                    using (StreamReader reader = new StreamReader(pathFile))
+                    {
+                        string apiKeysStr = reader.ReadToEnd();
+
+                        ApiKeysEntity apiKeys = JsonConvert.DeserializeObject<ApiKeysEntity>(apiKeysStr);
+                        return apiKeys;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Вывести ошибку
+                    return null;
+                }
             }
 
             return null;

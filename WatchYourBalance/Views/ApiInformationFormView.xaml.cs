@@ -10,28 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WatchYourBalance.ViewModels;
 
 namespace WatchYourBalance.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для ApiInformationForm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ApiInformationFormView : UserControl
     {
-        public MainWindow()
+        public ApiInformationFormView()
         {
             InitializeComponent();
-        }
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
 
-        private void MainToolbar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
+   
         }
     }
 }

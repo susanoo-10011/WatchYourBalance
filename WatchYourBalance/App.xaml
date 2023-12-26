@@ -28,6 +28,14 @@
                 <view:TradesView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:ConnectionListVM}">
+                <view:ConnectionListView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ApiInformationFormVM}">
+                <view:ApiInformationFormView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

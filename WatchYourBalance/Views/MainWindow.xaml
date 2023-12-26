@@ -15,7 +15,13 @@
         <VM:MainVM />
     </Window.DataContext>
 
-    <Border Background="#272537" CornerRadius="10">
+    <Border CornerRadius="10">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#3A3743" Offset="0"/>
+                <GradientStop Color="#202018" Offset="2"/>
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid x:Name="MainToolbar" Background="Transparent" MouseDown="MainToolbar_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -31,35 +37,47 @@
                        VerticalAlignment="Center" HorizontalAlignment="Center"
                        Foreground="White" FontSize="26"  />
 
+            <Border Grid.Row="1" BorderThickness="2" BorderBrush ="Black"  Margin="1" CornerRadius="10"/>
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Статистика"
+                <Border>
+                    <RadioButton Content="Статистика"
                              Height="50"
                              Foreground="White"
                              FontSize="18"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding StatisticsViewCommand}"/>
-                <RadioButton Content="Журнал"
+                </Border>
+                
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <RadioButton Content="Журнал"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding JournalViewCommand}"
                              FontSize="18"/>
-                <RadioButton Content="Мои сделки"
+                </Border>
+
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <RadioButton Content="Мои сделки"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding TradesViewCommand}"
                              FontSize="18"/>
-                <RadioButton Content="API"
+                </Border>
+
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <RadioButton Content="API"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding GetApiViewCommand}"
+                             Command="{Binding ConnectionListViewCommand}"
                              FontSize="18"/>
+                </Border>
             </StackPanel>
 
             <Grid Grid.Column="1" x:Name="ToolBar"
@@ -83,10 +101,9 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    
+
                     <Button Height="25" Width="25" x:Name="ExitButton" Margin="5"
-                        HorizontalAlignment="Right" VerticalAlignment="Top"
-                        Click="ExitButton_Click">
+                        HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CloseApplicationCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Bd" Background="Transparent">
@@ -103,7 +120,7 @@
                         </Button.Template>
                     </Button>
 
-                    
+
                 </StackPanel>
             </Grid>
 

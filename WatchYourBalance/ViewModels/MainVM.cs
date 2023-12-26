@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using WatchYourBalance.Core;
 using WatchYourBalance.Models;
@@ -17,11 +18,13 @@ namespace WatchYourBalance.ViewModels
         public RelayCommand StatisticsViewCommand { get; set; }
         public RelayCommand JournalViewCommand { get; set; }
         public RelayCommand TradesViewCommand { get; set; }
+        public RelayCommand ConnectionListViewCommand {  get; set; }
 
         public GetApiVM GetApiVM { get; set; }
         public StatisticsVM StatisticsVM { get; set; }
         public JournalVM JournalVM { get; set; }
         public TradesVM TradesVM { get; set; }
+        public ConnectionListVM ConnectionListVM { get; set; }
 
         private object _currentView;
         public object CurrentView
@@ -34,6 +37,7 @@ namespace WatchYourBalance.ViewModels
             }
         }
 
+
         public MainVM()
         {
 
@@ -41,8 +45,14 @@ namespace WatchYourBalance.ViewModels
             StatisticsVM = new StatisticsVM();
             JournalVM = new JournalVM();
             TradesVM = new TradesVM();
+            ConnectionListVM = new ConnectionListVM();
 
-            CurrentView = GetApiVM;
+            CurrentView = ConnectionListVM;
+
+            ConnectionListViewCommand = new RelayCommand(o  =>
+            {
+                CurrentView = ConnectionListVM;
+            });
 
             GetApiViewCommand = new RelayCommand(o =>
             {
@@ -63,6 +73,15 @@ namespace WatchYourBalance.ViewModels
             {
                 CurrentView = TradesVM;
             });
+
+            CloseApplicationCommand = new RelayCommand(o => CloseApplication());
+        }
+
+        public ICommand CloseApplicationCommand { get; }
+        private void CloseApplication()
+        {
+            Application.Current.Shutdown();
+
         }
     }
 }

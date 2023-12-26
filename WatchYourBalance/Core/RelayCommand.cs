@@ -9,12 +9,12 @@ namespace WatchYourBalance.Core
 {
     internal class RelayCommand : ICommand // позволяет связать элементы пользовательского интерфейса (кнопки, меню) с методами в коде приложения.
     {
-        private Action<object> _execute; // представляет метод, который будет выполнен при вызове команды
-        private Func<object, bool> _canExecute; //представляет метод, который определяет, можно ли выполнить команду в текущем состоянии приложения.
+        private readonly Action<object> _execute; // представляет метод, который будет выполнен при вызове команды
+        private readonly Func<object, bool> _canExecute; //представляет метод, который определяет, можно ли выполнить команду в текущем состоянии приложения.
 
         public event EventHandler CanExecuteChanged // какие то команды ретрансляции
         {
-            add { CommandManager.RequerySuggested += value; }
+            add { CommandManager.RequerySuggested += value; } //
             remove { CommandManager.RequerySuggested -= value; }
         }
 
@@ -30,7 +30,7 @@ namespace WatchYourBalance.Core
                                                  //Если значение true, команда доступна для выполнения, если false, то нет
         {
             return _canExecute == null || _canExecute(parameter);
-        }
+         }
 
         public void Execute(object parameter) // Выполняет команду, то есть вызывает метод, который был передан в конструктор класса RelayCommand.
         {

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WatchYourBalance.Views.ApiInformationFormView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WatchYourBalance.Views"
+        xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
+        mc:Ignorable="d"
+        Height="350" Width="500">
+
+    <UserControl.Resources>
+        <VM:ApiInformationFormVM x:Key="vm" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Source="{StaticResource vm}" />
+    </UserControl.DataContext>
+
+    <Border CornerRadius="30" Margin="5" BorderThickness="2" 
+        BorderBrush="Black" Grid.Row="0" Grid.Column="0">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#FFFFFF" Offset="0.0"/>
+                <GradientStop Color="#31314E" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <StackPanel>
+                <TextBlock Text="Ваш апи ключ" Foreground="Black"
+                           Height="50" Width="250" FontSize="30" Background="Transparent"
+                           HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
+                           TextAlignment="Center" FontWeight="Medium"/>
+                <TextBlock Text="{ Binding  GetApiKey}" Height="30" Width="250"
+                           FontSize="20" Foreground="Black" Background="Transparent"/>
+
+                <TextBlock Text="Ваш апи секрет" Foreground="Black"
+                           Height="50" Width="250" FontSize="30" Background="Transparent"
+                           HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
+                           TextAlignment="Center" FontWeight="Medium"/>
+                <TextBlock Text="{ Binding GetApiSecret}" Height="30" Width="250"
+                            FontSize="20" Foreground="Black" Background="Transparent"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
