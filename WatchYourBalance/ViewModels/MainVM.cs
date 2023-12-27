@@ -45,7 +45,7 @@ namespace WatchYourBalance.ViewModels
             StatisticsVM = new StatisticsVM();
             JournalVM = new JournalVM();
             TradesVM = new TradesVM();
-            ConnectionListVM = new ConnectionListVM();
+            ConnectionListVM = ConnectionListVM.Instance;
 
             CurrentView = ConnectionListVM;
 
@@ -81,7 +81,6 @@ namespace WatchYourBalance.ViewModels
         private void CloseApplication()
         {
             Application.Current.Shutdown();
-
         }
     }
 }

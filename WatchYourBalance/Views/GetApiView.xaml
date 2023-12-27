@@ -81,11 +81,7 @@
                             <TextBox Text="{Binding ApiKey}"/>
                             <TextBlock Text="Апи секрет:"/>
                             <TextBox Text="{Binding  ApiSecret}"/>
-                            <TextBlock Text="{Binding  GetApiKey, UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"
-                                       Foreground="Black"/>
-                            
                         </StackPanel>
-                        
                         
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
                                 VerticalAlignment="Bottom" Margin="10" Grid.Row="1">
@@ -93,16 +89,13 @@
                                 <Button x:Name="AddApiButton" Height="60" Width="200" Command="{Binding SaveApiCommand }"
                                         FontSize="30" 
                                         TextElement.FontWeight="Medium">
-                                    
+                                    <TextBlock Text="Подключить" />
                                 </Button>
                             </Border>
                         </StackPanel>
                     </Grid>
-
-
                 </StackPanel>
             </Grid>
         </Grid>
     </Border>
-
 </Window>

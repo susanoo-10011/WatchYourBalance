@@ -8,12 +8,9 @@
       mc:Ignorable="d" 
       Height="730" Width="1580">
 
-    <UserControl.Resources>
-        <VM:ConnectionListVM x:Key="ConnectionListVM" />
-    </UserControl.Resources>
     <UserControl.DataContext>
-        <Binding Source="{StaticResource ConnectionListVM}" />
-    </UserControl.DataContext>
+       <Binding Source="{x:Static VM:ConnectionListVM.Instance}" />
+   </UserControl.DataContext>
 
     <Grid >
         <Grid.ColumnDefinitions>
@@ -26,7 +23,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ItemsControl ItemsSource="{Binding  ApiInformationFormViewList }" Grid.Column="1">
+        <ItemsControl ItemsSource="{Binding ApiInformationFormViewList }" Grid.Column="1">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <local:ApiInformationFormView />
@@ -52,7 +49,7 @@
                 <Border CornerRadius="10" VerticalAlignment="Bottom" Height="80" Width="300" Padding="5"
                         BorderBrush="Black"  BorderThickness="2" Margin="5">
                     <Button Background="Transparent" Margin="0"  Command="{Binding CreateСonnectionCommand}">
-                        
+                        <TextBlock Text="Создать подключение" FontSize="26"/>
                     </Button>
                 </Border>
                 
