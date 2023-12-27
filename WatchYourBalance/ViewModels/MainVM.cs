@@ -18,7 +18,7 @@ namespace WatchYourBalance.ViewModels
         public RelayCommand StatisticsViewCommand { get; set; }
         public RelayCommand JournalViewCommand { get; set; }
         public RelayCommand TradesViewCommand { get; set; }
-        public RelayCommand ConnectionListViewCommand {  get; set; }
+        public RelayCommand ConnectionListViewCommand { get; set; }
 
         public GetApiVM GetApiVM { get; set; }
         public StatisticsVM StatisticsVM { get; set; }
@@ -49,7 +49,7 @@ namespace WatchYourBalance.ViewModels
 
             CurrentView = ConnectionListVM;
 
-            ConnectionListViewCommand = new RelayCommand(o  =>
+            ConnectionListViewCommand = new RelayCommand(o =>
             {
                 CurrentView = ConnectionListVM;
             });
@@ -74,13 +74,6 @@ namespace WatchYourBalance.ViewModels
                 CurrentView = TradesVM;
             });
 
-            CloseApplicationCommand = new RelayCommand(o => CloseApplication());
-        }
-
-        public ICommand CloseApplicationCommand { get; }
-        private void CloseApplication()
-        {
-            Application.Current.Shutdown();
         }
     }
 }

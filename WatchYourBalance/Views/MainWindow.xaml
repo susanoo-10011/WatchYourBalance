@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WatchYourBalance"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
+        xmlns:Utilities="clr-namespace:WatchYourBalance.Utilities"
         mc:Ignorable="d"
         WindowStyle="None"
         Background="Transparent"
@@ -84,8 +85,7 @@
                 Background="Transparent">
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
                     <Button Height="25" Width="25" x:Name="MinimizeButton" Margin="5"
-                            HorizontalAlignment="Center" VerticalAlignment="Top"
-                            Click="MinimizeButton_Click">
+                            HorizontalAlignment="Center" VerticalAlignment="Top">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Bd" Background="Transparent">
@@ -97,13 +97,16 @@
                                         <Setter TargetName="Bd" Property="Background" Value="Red"/>
                                         <Setter TargetName="Pt" Property="Stroke" Value="White"/>
                                     </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Utilities:WindowBehaviours.Hide" Value="True"/>
+                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
 
                     <Button Height="25" Width="25" x:Name="ExitButton" Margin="5"
-                        HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CloseApplicationCommand}">
+                        HorizontalAlignment="Right" VerticalAlignment="Top">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Bd" Background="Transparent">
@@ -114,6 +117,9 @@
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter TargetName="Bd" Property="Background" Value="Red"/>
                                         <Setter TargetName="Pt" Property="Stroke" Value="White"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Utilities:WindowBehaviours.Close" Value="True"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>

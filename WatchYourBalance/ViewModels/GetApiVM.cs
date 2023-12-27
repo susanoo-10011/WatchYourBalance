@@ -18,14 +18,15 @@ namespace WatchYourBalance.ViewModels
     {
         public GetApiVM()
         {
-            SaveApiCommand = new RelayCommand(o => SaveApi());
-            CloseGatApiWindowCommand = new RelayCommand(o => CloseGatApiWindow());
+            СonnectionСommand = new RelayCommand(o => Сonnection());
+            CloseGetApiWindowCommand = new RelayCommand(o => CloseGetApiWindow());
+            //GetApiMinimizedCommand = new RelayCommand(o => GetApiWindowMinimized());
         }
 
         #region Команды
-        public ICommand SaveApiCommand { get; }
+        public ICommand СonnectionСommand { get; }
 
-        private void SaveApi()
+        private void Сonnection()
         {
             ApiSerialize.ApiSerializeJson(_ApiKey, _ApiSecret);
 
@@ -34,14 +35,14 @@ namespace WatchYourBalance.ViewModels
             if (check == true)
             {
                 AddApiInfoFormView?.Invoke();
-                CloseGatApiWindow();
+                CloseGetApiWindow();
             }
         }
 
         public static event Action AddApiInfoFormView;
 
-        public ICommand CloseGatApiWindowCommand { get; }
-        private void CloseGatApiWindow()
+        public ICommand CloseGetApiWindowCommand { get; }
+        private void CloseGetApiWindow()
         {
             var window = Application.Current.Windows
            .OfType<Window>()
@@ -53,6 +54,11 @@ namespace WatchYourBalance.ViewModels
             }
         }
 
+        //public ICommand GetApiMinimizedCommand { get; }
+        //private void GetApiWindowMinimized()
+        //{
+        //    Application.Current.Windows[1].WindowState = WindowState.Minimized;
+        //}
 
         #endregion
 
@@ -76,17 +82,6 @@ namespace WatchYourBalance.ViewModels
             {
                 _ApiSecret = value;
                 OnPropertyChanged();
-            }
-        }
-
-        private string _GetApiKey;
-        public string GetApiKey
-        {
-            get
-            {
-                if (ApiSerialize.ApiKeys() is null || ApiSerialize.ApiKeys().ApiKey == null) return "0";
-                _GetApiKey = ApiSerialize.ApiKeys().ApiKey;
-                return _GetApiKey;
             }
         }
         #endregion

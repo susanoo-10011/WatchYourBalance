@@ -24,10 +24,6 @@ namespace WatchYourBalance.Views
         {
             InitializeComponent();
         }
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
 
         private void MainToolbar_MouseDown(object sender, MouseButtonEventArgs e)
         {
