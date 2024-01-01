@@ -9,7 +9,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WatchYourBalance.Core;
 using WatchYourBalance.Models;
-using WatchYourBalance.Models.Servers.Binance.Futures.Entity;
+using WatchYourBalance.Models.Market.Servers;
+using WatchYourBalance.Models.Market.Servers.Binance.Futures;
+using WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity;
 using WatchYourBalance.Views;
 
 namespace WatchYourBalance.ViewModels
@@ -20,7 +22,6 @@ namespace WatchYourBalance.ViewModels
         {
             СonnectionСommand = new RelayCommand(o => Сonnection());
             CloseGetApiWindowCommand = new RelayCommand(o => CloseGetApiWindow());
-            //GetApiMinimizedCommand = new RelayCommand(o => GetApiWindowMinimized());
         }
 
         #region Команды
@@ -28,15 +29,27 @@ namespace WatchYourBalance.ViewModels
 
         private void Сonnection()
         {
-            ApiSerialize.ApiSerializeJson(_ApiKey, _ApiSecret);
-
-            //if(статус сервера == false) вернуть всплывающее окно с ошибкой
-            bool check = true;
-            if (check == true)
+            try
             {
-                AddApiInfoFormView?.Invoke();
-                CloseGetApiWindow();
+                ApiJson.ApiSerializeJson(_ApiKey, _ApiSecret);
+
+                BinanceServerFuturesRealization realization = BinanceServerFuturesRealization.Instance();
+                realization.Connect();
+                if (realization.ServerStatus == ServerConnectStatus.Connect)
+                {
+                    AddApiInfoFormView?.Invoke();
+                    CloseGetApiWindow();
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка подключения", "Connection error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+            catch (Exception ex)
+            {
+                // MessageBox.Show(ex.Message);
+            }
+
         }
 
         public static event Action AddApiInfoFormView;
@@ -53,12 +66,6 @@ namespace WatchYourBalance.ViewModels
                 window.Close();
             }
         }
-
-        //public ICommand GetApiMinimizedCommand { get; }
-        //private void GetApiWindowMinimized()
-        //{
-        //    Application.Current.Windows[1].WindowState = WindowState.Minimized;
-        //}
 
         #endregion
 

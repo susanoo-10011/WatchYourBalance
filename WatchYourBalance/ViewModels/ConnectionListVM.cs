@@ -62,7 +62,7 @@ namespace WatchYourBalance.ViewModels
 
         private void ShowWindow()
         {
-            GetApiView getApiView = new GetApiView();
+            GetApiWindow getApiView = new GetApiWindow();
             getApiView.Show();
         }
     }

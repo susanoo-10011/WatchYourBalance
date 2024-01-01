@@ -8,21 +8,28 @@
         mc:Ignorable="d"
         Height="730" Width="1580">
     
-    <UserControl.Resources>
-        <VM:StatisticsVM x:Key="vm"/>
-    </UserControl.Resources>
     <UserControl.DataContext>
-        <Binding Source="{StaticResource vm}" />
+        <Binding Source="{x:Static VM:StatisticsVM.Instance}" />
     </UserControl.DataContext>
     
     <Grid>
         <StackPanel>
 
-            <TextBlock Text="Апи ключ" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="TotalWalletBalance" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
            FontSize="40" />
-
-            <TextBlock Text="{Binding  GetApiKey}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="{Binding  GetTotalWalletBalance}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
                     FontSize="40" Background="Black" Width="300"/>
+            
+            <TextBlock Text="CanDeposit" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        FontSize="40" />
+            <TextBlock Text="{Binding GetCanDeposit}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+         FontSize="40" Background="Black" Width="300"/>
+
+            <TextBlock Text="TotalMarginBalance" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontSize="40" />
+            <TextBlock Text="{Binding GetTotalMarginBalance}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        FontSize="40" Background="Black" Width="300"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

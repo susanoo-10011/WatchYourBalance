@@ -37,12 +37,17 @@ namespace WatchYourBalance.ViewModels
             }
         }
 
+        public ICommand CloseAppCommand {  get; set; }
+        private void CloseApp()
+        {
+            Application.Current.Shutdown();
+        }
 
         public MainVM()
         {
 
             GetApiVM = new GetApiVM();
-            StatisticsVM = new StatisticsVM();
+            StatisticsVM = StatisticsVM.Instance;
             JournalVM = new JournalVM();
             TradesVM = new TradesVM();
             ConnectionListVM = ConnectionListVM.Instance;
@@ -74,6 +79,7 @@ namespace WatchYourBalance.ViewModels
                 CurrentView = TradesVM;
             });
 
+            CloseAppCommand = new RelayCommand(o => CloseApp());
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿<Window  x:Class="WatchYourBalance.Views.GetApiView"
+﻿<Window  x:Class="WatchYourBalance.Views.GetApiWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WatchYourBalance.Views"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
-        xmlns:Utilities="clr-namespace:WatchYourBalance.Utilities"
+        xmlns:Utilities="clr-namespace:WatchYourBalance.Entity.Utilities"
         mc:Ignorable="d"
         Height="500" Width="600" Background="Transparent"
         WindowStartupLocation="CenterScreen"
@@ -86,10 +86,13 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0">
-                            <TextBlock Text="Апи ключ:"/>
-                            <TextBox Text="{Binding ApiKey}"/>
-                            <TextBlock Text="Апи секрет:"/>
-                            <TextBox Text="{Binding  ApiSecret}"/>
+                            <TextBlock Text="Название:" FontSize="25"/>
+                            <TextBox Text="" FontSize="25"/>
+                            
+                            <TextBlock Text="Апи ключ:" FontSize="25"/>
+                            <TextBox Text="{Binding ApiKey}" FontSize="25"/>
+                            <TextBlock Text="Апи секрет:" FontSize="25"/>
+                            <TextBox Text="{Binding  ApiSecret}" FontSize="25"/>
                         </StackPanel>
                         
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 

@@ -17,7 +17,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:GetApiVM}">
-                <view:GetApiView/>
+                <view:GetApiWindow/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:JournalVM}">

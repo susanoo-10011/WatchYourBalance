@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WatchYourBalance"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
-        xmlns:Utilities="clr-namespace:WatchYourBalance.Utilities"
+        xmlns:Utilities="clr-namespace:WatchYourBalance.Entity.Utilities"
         mc:Ignorable="d"
         WindowStyle="None"
         Background="Transparent"
@@ -40,7 +40,7 @@
 
             <Border Grid.Row="1" BorderThickness="2" BorderBrush ="Black"  Margin="1" CornerRadius="10"/>
             <StackPanel Grid.Row="1">
-                <Border>
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="5,5,5,0">
                     <RadioButton Content="Статистика"
                              Height="50"
                              Foreground="White"
@@ -49,8 +49,8 @@
                              IsChecked="False"
                              Command="{Binding StatisticsViewCommand}"/>
                 </Border>
-                
-                <Border BorderBrush="Black" BorderThickness="1">
+
+                <Border BorderBrush="Black" BorderThickness="1" Margin="5,5,5,0" CornerRadius="10">
                     <RadioButton Content="Журнал"
                              Height="50"
                              Foreground="White"
@@ -60,7 +60,7 @@
                              FontSize="18"/>
                 </Border>
 
-                <Border BorderBrush="Black" BorderThickness="1">
+                <Border BorderBrush="Black" BorderThickness="1" Margin="5,5,5,0" CornerRadius="10">
                     <RadioButton Content="Мои сделки"
                              Height="50"
                              Foreground="White"
@@ -70,7 +70,7 @@
                              FontSize="18"/>
                 </Border>
 
-                <Border BorderBrush="Black" BorderThickness="1">
+                <Border BorderBrush="Black" BorderThickness="1" Margin="5,5,5,2" CornerRadius="10">
                     <RadioButton Content="API"
                              Height="50"
                              Foreground="White"
@@ -106,7 +106,7 @@
                     </Button>
 
                     <Button Height="25" Width="25" x:Name="ExitButton" Margin="5"
-                        HorizontalAlignment="Right" VerticalAlignment="Top">
+                        HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding CloseAppCommand}">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Bd" Background="Transparent">
@@ -117,9 +117,6 @@
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter TargetName="Bd" Property="Background" Value="Red"/>
                                         <Setter TargetName="Pt" Property="Stroke" Value="White"/>
-                                    </Trigger>
-                                    <Trigger Property="IsPressed" Value="true">
-                                        <Setter Property="Utilities:WindowBehaviours.Close" Value="True"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>

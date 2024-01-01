@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WatchYourBalance.Utilities
+namespace WatchYourBalance.Entity.Utilities
 {
     public static class WindowBehaviours
     {
@@ -23,7 +23,7 @@ namespace WatchYourBalance.Utilities
 
         private static void OnClose(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool && ((bool)e.NewValue))
+            if (e.NewValue is bool && (bool)e.NewValue)
             {
                 Window window = GetWindow(sender);
 
@@ -48,7 +48,7 @@ namespace WatchYourBalance.Utilities
 
         private static void OnHide(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool && ((bool)e.NewValue))
+            if (e.NewValue is bool && (bool)e.NewValue)
             {
                 Window window = GetWindow(sender);
 
@@ -73,7 +73,7 @@ namespace WatchYourBalance.Utilities
 
         private static void OnFull(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool && ((bool)e.NewValue))
+            if (e.NewValue is bool && (bool)e.NewValue)
             {
                 Window window = GetWindow(sender);
 
@@ -98,7 +98,7 @@ namespace WatchYourBalance.Utilities
 
         private static void OnNormal(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is bool && ((bool)e.NewValue))
+            if (e.NewValue is bool && (bool)e.NewValue)
             {
                 Window window = GetWindow(sender);
 

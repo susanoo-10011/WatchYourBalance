@@ -25,20 +25,31 @@
         </Border.Background>
 
         <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
             <StackPanel>
                 <TextBlock Text="Ваш апи ключ" Foreground="Black"
                            Height="50" Width="250" FontSize="30" Background="Transparent"
                            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
                            TextAlignment="Center" FontWeight="Medium"/>
-                <TextBlock Text="{ Binding  GetApiKey}" Height="30" Width="250"
-                           FontSize="20" Foreground="Black" Background="Transparent"/>
+                <TextBlock Text="{ Binding  GetApiKey}" Height="30" Width="450"
+                           FontSize="12" Foreground="Black" Background="Transparent"/>
 
                 <TextBlock Text="Ваш апи секрет" Foreground="Black"
                            Height="50" Width="250" FontSize="30" Background="Transparent"
                            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
                            TextAlignment="Center" FontWeight="Medium"/>
-                <TextBlock Text="{ Binding GetApiSecret}" Height="30" Width="250"
-                            FontSize="20" Foreground="Black" Background="Transparent"/>
+                <TextBlock Text="{ Binding GetApiSecret}" Height="30" Width="450"
+                            FontSize="12" Foreground="Black" Background="Transparent"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                
+                <Button Height="40" Width="150" Content="Подключиться" FontSize="20" Margin="3"/>
+                <Button Height="40" Width="150" Content="Отключиться" FontSize="20" Margin="3"/>
             </StackPanel>
         </Grid>
     </Border>

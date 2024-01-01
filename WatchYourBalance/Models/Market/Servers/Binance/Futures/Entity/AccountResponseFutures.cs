@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
+namespace WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity
 {
     public class AccountResponseFutures
     {

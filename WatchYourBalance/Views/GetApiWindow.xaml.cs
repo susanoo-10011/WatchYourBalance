@@ -9,9 +9,9 @@ using System.Windows.Input;
 
 namespace WatchYourBalance.Views
 {
-    public partial class GetApiView : Window
+    public partial class GetApiWindow : Window
     {
-        public GetApiView()
+        public GetApiWindow()
         {
             InitializeComponent();
         }

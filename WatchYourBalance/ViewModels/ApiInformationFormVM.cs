@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WatchYourBalance.Models.Servers.Binance.Futures.Entity;
+using WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity;
 
 namespace WatchYourBalance.ViewModels
 {
@@ -15,8 +15,8 @@ namespace WatchYourBalance.ViewModels
         {
             get
             {
-                if (ApiSerialize.ApiKeys() is null || ApiSerialize.ApiKeys().ApiKey == null) return "0";
-                _GetApiKey = ApiSerialize.ApiKeys().ApiKey;
+                if (ApiJson.ApiKeys() is null || ApiJson.ApiKeys().ApiKey == null) return "0";
+                _GetApiKey = ApiJson.ApiKeys().ApiKey;
                 return _GetApiKey;
             }
         }
@@ -26,8 +26,8 @@ namespace WatchYourBalance.ViewModels
         {
             get
             {
-                if (ApiSerialize.ApiKeys() is null || ApiSerialize.ApiKeys().ApiSecret == null) return "0";
-                _GetApiSecret = ApiSerialize.ApiKeys().ApiSecret;
+                if (ApiJson.ApiKeys() is null || ApiJson.ApiKeys().ApiSecret == null) return "0";
+                _GetApiSecret = ApiJson.ApiKeys().ApiSecret;
                 return _GetApiSecret;
             }
         }

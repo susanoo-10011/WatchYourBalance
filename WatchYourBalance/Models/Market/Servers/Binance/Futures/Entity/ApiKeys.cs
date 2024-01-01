@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
+namespace WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity
 {
     [Serializable]
     public class ApiKeysEntity
@@ -16,7 +16,7 @@ namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
 
     }
 
-    public class ApiSerialize
+    public class ApiJson
     {
         public static void ApiSerializeJson(string apiKey, string apiSecret)
         {
@@ -69,8 +69,8 @@ namespace WatchYourBalance.Models.Servers.Binance.Futures.Entity
                     return null;
                 }
             }
-
             return null;
         }
     }
 }
+
