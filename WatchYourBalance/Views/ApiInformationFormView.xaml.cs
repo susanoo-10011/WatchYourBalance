@@ -23,8 +23,6 @@ namespace WatchYourBalance.Views
         public ApiInformationFormView()
         {
             InitializeComponent();
-
-   
         }
     }
 }

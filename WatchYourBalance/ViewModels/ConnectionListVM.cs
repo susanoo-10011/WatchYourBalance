@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,9 @@ namespace WatchYourBalance.ViewModels
 
         private ConnectionListVM()
         {
+            LoadFromJson();
+            UpdateCollectionEvent += SaveToJson;
             CreateСonnectionCommand = new RelayCommand(o => ShowWindow());
-
-            GetApiVM.AddApiInfoFormView += AddItemsControl;
         }
 
         public static ConnectionListVM Instance
@@ -42,28 +44,50 @@ namespace WatchYourBalance.ViewModels
             }
         }
 
-        private ObservableCollection<ApiInformationFormView> _ApiInformationFormViewList = new ObservableCollection<ApiInformationFormView>();
-        public ObservableCollection<ApiInformationFormView> ApiInformationFormViewList
+        private ObservableCollection<ApiInformationFormVM> _ApiInformationFormVMList = new ObservableCollection<ApiInformationFormVM>();
+        public ObservableCollection<ApiInformationFormVM> ApiInformationFormVMList
         {
-            get { return _ApiInformationFormViewList; }
+            get { return _ApiInformationFormVMList; }
             set
             {
-                _ApiInformationFormViewList = value;
+                _ApiInformationFormVMList = value;
+                UpdateCollectionEvent?.Invoke();
                 OnPropertyChanged();
             }
         }
 
-        private void AddItemsControl()
-        {
-            ApiInformationFormViewList.Add(new ApiInformationFormView());
-        }
-
         public ICommand CreateСonnectionCommand { get; set; }
-
         private void ShowWindow()
         {
             GetApiWindow getApiView = new GetApiWindow();
             getApiView.Show();
+        }
+
+
+        private event Action UpdateCollectionEvent;
+        public void SaveToJson()
+        {
+            string folderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\JsonFiles";
+
+            if(!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            string filePath = Path.Combine(folderPath, "CollectionApiInfoFormVM");
+
+            var json = JsonConvert.SerializeObject(_ApiInformationFormVMList);
+
+            File.WriteAllText(filePath, json);
+
+        }
+
+        private void LoadFromJson()
+        {
+            string filePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\JsonFiles" + "\\CollectionApiInfoFormVM";
+            if (File.Exists(filePath))
+            {
+                var json = File.ReadAllText(filePath);
+                _ApiInformationFormVMList = JsonConvert.DeserializeObject<ObservableCollection<ApiInformationFormVM>>(json);
+            }
         }
     }
 }

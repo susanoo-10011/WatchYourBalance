@@ -23,14 +23,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ItemsControl ItemsSource="{Binding ApiInformationFormViewList }" Grid.Column="1">
+        <ItemsControl ItemsSource="{Binding ApiInformationFormVMList }" Grid.Column="1">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:ApiInformationFormView />
+                    <local:ApiInformationFormView DataContext="{Binding}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+
         <Border CornerRadius="30" Margin="5" BorderThickness="2" 
                 BorderBrush="Black" Grid.Row="0" Grid.Column="0">
             <Border.Background>

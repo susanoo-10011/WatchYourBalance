@@ -31,13 +31,21 @@ namespace WatchYourBalance.ViewModels
         {
             try
             {
-                ApiJson.ApiSerializeJson(_ApiKey, _ApiSecret);
+                ApiJson.ApiSerializeJson(ApiKey, ApiSecret);
 
                 BinanceServerFuturesRealization realization = BinanceServerFuturesRealization.Instance();
                 realization.Connect();
                 if (realization.ServerStatus == ServerConnectStatus.Connect)
                 {
-                    AddApiInfoFormView?.Invoke();
+                    ConnectionListVM.Instance.ApiInformationFormVMList.Add(new ApiInformationFormVM()
+                    {
+                        Name = Name,
+                        GetApiKey = ApiKey,
+                        GetApiSecret = ApiSecret,
+                    });
+
+                    ConnectionListVM.Instance.SaveToJson();
+
                     CloseGetApiWindow();
                 }
                 else
@@ -51,8 +59,6 @@ namespace WatchYourBalance.ViewModels
             }
 
         }
-
-        public static event Action AddApiInfoFormView;
 
         public ICommand CloseGetApiWindowCommand { get; }
         private void CloseGetApiWindow()
@@ -70,6 +76,19 @@ namespace WatchYourBalance.ViewModels
         #endregion
 
         #region Свойства
+
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set 
+            {
+                _Name = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private string _ApiKey;
         public string ApiKey
         {

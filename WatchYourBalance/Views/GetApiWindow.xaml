@@ -87,7 +87,7 @@
 
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="Название:" FontSize="25"/>
-                            <TextBox Text="" FontSize="25"/>
+                            <TextBox Text="{Binding Name}" FontSize="25"/>
                             
                             <TextBlock Text="Апи ключ:" FontSize="25"/>
                             <TextBox Text="{Binding ApiKey}" FontSize="25"/>

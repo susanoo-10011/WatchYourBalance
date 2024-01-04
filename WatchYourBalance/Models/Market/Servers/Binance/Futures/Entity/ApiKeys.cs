@@ -28,7 +28,6 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity
 
             string apiJson = JsonConvert.SerializeObject(apiKeys);
 
-
             string folderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\JsonFiles";
 
             if (!Directory.Exists(folderPath))
