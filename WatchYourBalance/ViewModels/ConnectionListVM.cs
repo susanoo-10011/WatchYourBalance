@@ -89,5 +89,7 @@ namespace WatchYourBalance.ViewModels
                 _ApiInformationFormVMList = JsonConvert.DeserializeObject<ObservableCollection<ApiInformationFormVM>>(json);
             }
         }
+
+
     }
 }

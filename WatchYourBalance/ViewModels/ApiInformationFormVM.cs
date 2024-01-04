@@ -16,6 +16,7 @@ namespace WatchYourBalance.ViewModels
         public ApiInformationFormVM() 
         {
             СonnectionCommand = new RelayCommand(o => Сonnection());
+            DeleteCommand = new RelayCommand(o => Delete());
         }
 
         private string _Name;
@@ -69,6 +70,18 @@ namespace WatchYourBalance.ViewModels
             realization.Connect();
         }
 
-        
+        public ICommand DeleteCommand { get; set; }
+        private void Delete()
+        {
+            for(int i = 0; i < ConnectionListVM.Instance.ApiInformationFormVMList.Count; i++)
+            {
+                if (ConnectionListVM.Instance.ApiInformationFormVMList[i].Name == Name)
+                {
+                    ConnectionListVM.Instance.ApiInformationFormVMList.RemoveAt(i);
+                    ConnectionListVM.Instance.SaveToJson();
+                    break;
+                }
+            }
+        }
     }
 }

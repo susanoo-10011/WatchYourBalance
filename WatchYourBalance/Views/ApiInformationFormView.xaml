@@ -53,7 +53,8 @@
                 <Button Height="40" Width="120" Content="Подключиться" FontSize="16" Margin="3"
                         Command="{Binding СonnectionCommand}"/>
                 <Button Height="40" Width="120" Content="Отключиться" FontSize="16" Margin="3"/>
-                <Button Height="40" Width="120" Content="Удалить" FontSize="16" Margin="3"/>
+                <Button Height="40" Width="120" Content="Удалить" FontSize="16" Margin="3"
+                        Command="{Binding DeleteCommand}"/>
             </StackPanel>
         </Grid>
     </Border>
