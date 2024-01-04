@@ -31,12 +31,22 @@ namespace WatchYourBalance.ViewModels
         {
             try
             {
+                for (int i = 0; i < ConnectionListVM.Instance.ApiInformationFormVMList.Count; i++)
+                {
+                    if (ConnectionListVM.Instance.ApiInformationFormVMList[i].Name == Name)
+                    {
+                        throw new Exception("Такое имя уже существует!");
+                    }
+                }
+
                 ApiJson.ApiSerializeJson(ApiKey, ApiSecret);
 
                 BinanceServerFuturesRealization realization = BinanceServerFuturesRealization.Instance();
                 realization.Connect();
                 if (realization.ServerStatus == ServerConnectStatus.Connect)
                 {
+                    
+
                     ConnectionListVM.Instance.ApiInformationFormVMList.Add(new ApiInformationFormVM()
                     {
                         Name = Name,
@@ -50,12 +60,12 @@ namespace WatchYourBalance.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка подключения", "Connection error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    throw new Exception("Ошибка подключения");
                 }
             }
             catch (Exception ex)
             {
-                // MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Connection error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -81,7 +91,7 @@ namespace WatchYourBalance.ViewModels
         public string Name
         {
             get { return _Name; }
-            set 
+            set
             {
                 _Name = value;
                 OnPropertyChanged();
