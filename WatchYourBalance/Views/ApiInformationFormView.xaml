@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WatchYourBalance.Views"
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
-        Height="350" Width="500">
+        Height="300" Width="505">
 
     <UserControl.DataContext>
         <Binding />
@@ -25,23 +25,24 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <StackPanel>
-                <TextBlock Text="Имя" Foreground="Black"
-                           Height="40" Width="250" FontSize="26" Background="Transparent"
+                <TextBlock Text="Название аккаунта" Foreground="Black"
+                           Height="25" Width="250" FontSize="18" Background="Transparent"
                            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"
                            TextAlignment="Center" FontWeight="Medium"/>
-                <TextBlock Text="{ Binding Name}" Height="30" Width="450"
-                           FontSize="12" Foreground="Black" Background="Transparent"/>
+                <TextBlock Text="{ Binding Name}" Height="30" Width="450" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" TextAlignment="Center"
+                           FontSize="14" Foreground="Black" Background="Transparent"/>
                 <TextBlock Text="Ваш апи ключ" Foreground="Black"
-                           Height="40" Width="250" FontSize="26" Background="Transparent"
+                           Height="25" Width="250" FontSize="18" Background="Transparent"
                            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"
                            TextAlignment="Center" FontWeight="Medium"/>
                 <TextBlock Text="{ Binding  GetApiKey}" Height="30" Width="450"
                            FontSize="12" Foreground="Black" Background="Transparent"/>
                 <TextBlock Text="Ваш апи секрет" Foreground="Black"
-                           Height="40" Width="250" FontSize="26" Background="Transparent"
+                           Height="25" Width="250" FontSize="18" Background="Transparent"
                            HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5"
                            TextAlignment="Center" FontWeight="Medium"/>
                 <TextBlock Text="{ Binding GetApiSecret}" Height="30" Width="450"

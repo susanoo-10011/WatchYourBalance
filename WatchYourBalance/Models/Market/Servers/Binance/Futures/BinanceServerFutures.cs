@@ -27,7 +27,8 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
             ServerStatus = ServerConnectStatus.Disconnect;
 
             Thread worker = new Thread(PortfolioUpdater);
-                worker.Start();
+            worker.IsBackground = true;
+            worker.Start();
         }
 
         public static BinanceServerFuturesRealization Instance()

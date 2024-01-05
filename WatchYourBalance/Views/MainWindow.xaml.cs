@@ -24,7 +24,6 @@ namespace WatchYourBalance.Views
         {
             InitializeComponent();
         }
-
         private void MainToolbar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();

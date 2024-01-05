@@ -22,8 +22,8 @@ namespace WatchYourBalance.ViewModels
         private ConnectionListVM()
         {
             LoadFromJson();
-            UpdateCollectionEvent += SaveToJson;
             CreateСonnectionCommand = new RelayCommand(o => ShowWindow());
+            UpdateCollectionEvent += SaveToJson;
         }
 
         public static ConnectionListVM Instance
@@ -44,6 +44,13 @@ namespace WatchYourBalance.ViewModels
             }
         }
 
+        public ICommand CreateСonnectionCommand { get; set; }
+        private void ShowWindow()
+        {
+            GetApiWindow getApiView = new GetApiWindow();
+            getApiView.Show();
+        }
+
         private ObservableCollection<ApiInformationFormVM> _ApiInformationFormVMList = new ObservableCollection<ApiInformationFormVM>();
         public ObservableCollection<ApiInformationFormVM> ApiInformationFormVMList
         {
@@ -55,14 +62,6 @@ namespace WatchYourBalance.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public ICommand CreateСonnectionCommand { get; set; }
-        private void ShowWindow()
-        {
-            GetApiWindow getApiView = new GetApiWindow();
-            getApiView.Show();
-        }
-
 
         private event Action UpdateCollectionEvent;
         public void SaveToJson()
@@ -89,7 +88,5 @@ namespace WatchYourBalance.ViewModels
                 _ApiInformationFormVMList = JsonConvert.DeserializeObject<ObservableCollection<ApiInformationFormVM>>(json);
             }
         }
-
-
     }
 }

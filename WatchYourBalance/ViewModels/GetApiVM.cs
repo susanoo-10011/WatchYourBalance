@@ -45,8 +45,6 @@ namespace WatchYourBalance.ViewModels
                 realization.Connect();
                 if (realization.ServerStatus == ServerConnectStatus.Connect)
                 {
-                    
-
                     ConnectionListVM.Instance.ApiInformationFormVMList.Add(new ApiInformationFormVM()
                     {
                         Name = Name,

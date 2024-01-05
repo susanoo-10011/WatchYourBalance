@@ -17,17 +17,19 @@
 
             <TextBlock Text="TotalWalletBalance" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
            FontSize="40" />
-            <TextBlock Text="{Binding  GetTotalWalletBalance}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="{Binding  GetTotalWalletBalance}" Foreground="White" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
                     FontSize="40" Background="Black" Width="300"/>
             
-            <TextBlock Text="CanDeposit" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-                        FontSize="40" />
-            <TextBlock Text="{Binding GetCanDeposit}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-         FontSize="40" Background="Black" Width="300"/>
+            <TextBlock Text="CanDeposit" Foreground="White" HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" FontSize="40" />
+            <TextBlock Text="{Binding GetCanDeposit}" Foreground="White" HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" FontSize="40" Background="Black" Width="300"/>
 
-            <TextBlock Text="TotalMarginBalance" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-               FontSize="40" />
-            <TextBlock Text="{Binding GetTotalMarginBalance}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Text="TotalMarginBalance" Foreground="White" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" />
+            <TextBlock Text="{Binding GetTotalMarginBalance}" Foreground="White" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
                         FontSize="40" Background="Black" Width="300"/>
 
         </StackPanel>
