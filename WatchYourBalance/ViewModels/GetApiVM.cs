@@ -42,7 +42,7 @@ namespace WatchYourBalance.ViewModels
                 ApiJson.ApiSerializeJson(ApiKey, ApiSecret);
 
                 BinanceServerFuturesRealization realization = BinanceServerFuturesRealization.Instance();
-                realization.Connect();
+                realization.Connect(ApiKey, ApiSecret);
                 if (realization.ServerStatus == ServerConnectStatus.Connect)
                 {
                     ConnectionListVM.Instance.ApiInformationFormVMList.Add(new ApiInformationFormVM()

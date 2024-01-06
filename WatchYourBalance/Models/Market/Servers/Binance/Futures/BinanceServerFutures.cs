@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using WatchYourBalance.Entity;
 using WatchYourBalance.Models.Market.Servers.Binance.Futures.Entity;
 
@@ -43,11 +44,14 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
             return _instance;
         }
 
-        public void Connect()
+        /// <summary>
+        /// подсоединиться к апи
+        /// </summary>
+        public void Connect(string apiKey, string apiSecret)
         {
             if (_client == null)
             {
-                _client = new BinanceClientFutures(ApiJson.ApiKeys().ApiKey, ApiJson.ApiKeys().ApiSecret);
+                _client = new BinanceClientFutures(apiKey, apiSecret);
                 _client.Connected += _client_Connected;
                 //_client.UpdatePairs += _client_UpdatePairs;
                 _client.Disconnected += _client_Disconnected;
@@ -55,7 +59,7 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
                 //    _client.UpdatePortfolio += _client_UpdatePortfolio;
                 //    _client.UpdateMarketDepth += _client_UpdateMarketDepth;
                 //    _client.NewTradesEvent += _client_NewTradesEvent;
-                //    _client.MyTradeEvent += _client_MyTradeEvent;
+                    _client.MyTradeEvent += _client_MyTradeEvent;
                 //    _client.MyOrderEvent += _client_MyOrderEvent;
                 //    _client.ListenKeyExpiredEvent += _client_ListenKeyExpiredEvent;
                 //    //_client.LogMessageEvent += SendLogMessage;
@@ -72,8 +76,7 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
                 //_client.futures_type = this.futures_type;
                 //_client.HedgeMode = ((ServerParameterBool)ServerParameters[3]).Value;
                 _client.Connect();
-                ServerStatus = ServerConnectStatus.Connect;
-
+                ServerStatus = ServerConnectStatus.Connect; //переделать, коннект должен изменять на коннект не здесь
             }
         }
 
@@ -90,7 +93,7 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -197,6 +200,13 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
         #endregion
 
 
+        void _client_MyTradeEvent(MyTrade myTrade)
+        {
+            if (MyTradeEvent != null)
+            {
+                MyTradeEvent(myTrade);
+            }
+        }
 
         void _client_Disconnected()
         {
@@ -232,6 +242,10 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
         /// </summary>
         private BinanceClientFutures _client;
 
+        /// <summary>
+        /// вызывается когда изменился мой трейд
+        /// </summary>
+        public event Action<MyTrade> MyTradeEvent;
 
         /// <summary>
         /// request account info

@@ -67,7 +67,7 @@ namespace WatchYourBalance.ViewModels
         private void Сonnection()
         {
             BinanceServerFuturesRealization realization = BinanceServerFuturesRealization.Instance();
-            realization.Connect();
+            realization.Connect(GetApiKey, GetApiSecret);
         }
 
         public ICommand DeleteCommand { get; set; }

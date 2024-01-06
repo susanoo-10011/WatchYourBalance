@@ -41,6 +41,11 @@ namespace WatchYourBalance.ViewModels
 
         private void UpdateAccountInfo(AccountResponseFutures account)
         {
+            _GetCurrentOrder = account.positions.First().symbol;
+            OnPropertyChanged();
+
+
+
             _GetTotalWalletBalance = account.totalWalletBalance;
             OnPropertyChanged(nameof(GetTotalWalletBalance));
 
@@ -52,13 +57,22 @@ namespace WatchYourBalance.ViewModels
             OnPropertyChanged(nameof(GetTotalMarginBalance));
         }
 
+
+        private string _GetCurrentOrder;
+        public string GetCurrentOrder
+        {
+            get { return _GetCurrentOrder; }
+            set
+            {
+                _GetCurrentOrder = value;
+                OnPropertyChanged();
+            }
+        }
         private string _GetTotalWalletBalance;
         public string GetTotalWalletBalance
         {
             get
-            {
-                return _GetTotalWalletBalance; 
-            }
+            { return _GetTotalWalletBalance; }
             set 
             {
                 _GetTotalWalletBalance = value;
@@ -70,9 +84,7 @@ namespace WatchYourBalance.ViewModels
         public string GetCanDeposit
         {
             get
-            {
-                return _GetCanDeposit;
-            }
+            { return _GetCanDeposit; }
             set
             {
                 _GetCanDeposit = value;
@@ -84,9 +96,7 @@ namespace WatchYourBalance.ViewModels
         public string GetTotalMarginBalance
         {
             get
-            {
-                return _GetTotalMarginBalance;
-            }
+            { return _GetTotalMarginBalance; }
             set
             {
                 _GetTotalMarginBalance = value;

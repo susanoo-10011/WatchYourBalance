@@ -7,31 +7,42 @@
         xmlns:VM="clr-namespace:WatchYourBalance.ViewModels"
         mc:Ignorable="d"
         Height="730" Width="1580">
-    
+
     <UserControl.DataContext>
         <Binding Source="{x:Static VM:StatisticsVM.Instance}" />
     </UserControl.DataContext>
-    
+
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <TextBlock Text="TotalWalletBalance" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
-           FontSize="40" />
-            <TextBlock Text="{Binding  GetTotalWalletBalance}" Foreground="White" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    FontSize="40" Background="Black" Width="300"/>
-            
-            <TextBlock Text="CanDeposit" Foreground="White" HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" FontSize="40" />
-            <TextBlock Text="{Binding GetCanDeposit}" Foreground="White" HorizontalAlignment="Center" 
-                       VerticalAlignment="Center" FontSize="40" Background="Black" Width="300"/>
-
-            <TextBlock Text="TotalMarginBalance" Foreground="White" 
-                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" />
-            <TextBlock Text="{Binding GetTotalMarginBalance}" Foreground="White" 
+        <Grid Grid.Row="0">
+            <TextBlock Text="ЗДЕСЬ БУДУТ НАСТРОЙКИ СДЕЛОК" Foreground="White"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
-                        FontSize="40" Background="Black" Width="300"/>
+                       FontSize="50"/>
+        </Grid>
+        <Border Grid.Row="1" Background="Transparent">
+            
+            <UniformGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-        </StackPanel>
+                    <StackPanel>
+                        
+                    <TextBlock Text="TotalMarginBalance" 
+                               Foreground="White" FontSize="26"/>
+                        <TextBlock Text="{Binding GetTotalMarginBalance}" 
+                               Foreground="Black" FontSize="26" Background="White"/>
+                        
+                        
+                    </StackPanel>
+                </Grid>
+            </UniformGrid>
+        </Border>
     </Grid>
 </UserControl>

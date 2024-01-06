@@ -34,7 +34,6 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
             ApiSecret = apiSecret;
         }
 
-
         public string _baseUrl = "https://fapi.binance.com";
         public string wss_point = "wss://fstream.binance.com";
         public string type_str_selector = "fapi";
@@ -837,13 +836,11 @@ namespace WatchYourBalance.Models.Market.Servers.Binance.Futures
         #region outgoing events / исходящие события
 
         /// <summary>
-        /// my new orders
         /// новые мои ордера
         /// </summary>
         public event Action<Order> MyOrderEvent;
 
         /// <summary>
-        /// my new trades
         /// новые мои сделки
         /// </summary>
         public event Action<MyTrade> MyTradeEvent;
